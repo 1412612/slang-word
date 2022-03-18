@@ -32,9 +32,10 @@ public class Application {
 
 
         IOFile ioFile = new IOFile();
-        ioFile.read("");
 
-        menu();
+        ioFile.readFileFirstTime("");
+
+
 
     }
 }
