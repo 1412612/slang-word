@@ -2,6 +2,7 @@ package function;
 
 import app.Constant;
 import dictinary.Dictionary;
+import io.IOFile;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,12 +10,15 @@ import java.util.Scanner;
 public class FunctionOne implements AppFunction{
     private Scanner scanner;
     private Dictionary dictionary;
+    private IOFile ioFile;
 
     public FunctionOne(){};
 
-    public FunctionOne(Scanner scanner, Dictionary dictionary){
+    public FunctionOne(Scanner scanner, Dictionary dictionary, IOFile ioFile){
         this.scanner = scanner;
         this.dictionary = dictionary;
+        this.ioFile = ioFile;
+
     }
     @Override
     public void run() {
@@ -39,6 +43,8 @@ public class FunctionOne implements AppFunction{
                 break;
             }
             List<String> definition = dictionary.getSlangDictionary().get(line);
+
+            ioFile.writeHistorySearchSlangWord(line);
 
             if(definition==null){
                 System.out.println(Constant.Color.ANSI_YELLOW + "Không có slang word "+  line + " trong từ điển!" + Constant.Color.ANSI_RESET);

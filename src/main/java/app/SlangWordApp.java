@@ -3,7 +3,9 @@ package app;
 import dictinary.Dictionary;
 import function.AppFunction;
 import function.FunctionOne;
+import function.FunctionThree;
 import function.FunctionTwo;
+import io.IOFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +15,18 @@ public class SlangWordApp {
     private Dictionary dictionary;
     private Scanner scanner;
     private List<AppFunction> functions;
+    private IOFile ioFile;
 
     public SlangWordApp(){
         this.dictionary = new Dictionary();
         this.dictionary.loadDictionary();
         this.scanner = new Scanner(System.in);
         functions = new ArrayList<>();
-        functions.add(new FunctionOne(scanner, dictionary));
+        this.ioFile = new IOFile();
+        functions.add(new FunctionOne(scanner, dictionary, ioFile));
         functions.add(new FunctionTwo(scanner, dictionary));
+        functions.add(new FunctionThree(scanner, dictionary, ioFile));
+
     }
 
     public void run(){
@@ -38,6 +44,8 @@ public class SlangWordApp {
                 case 1: functions.get(0).run();
                         break;
                 case 2: functions.get(1).run();
+                        break;
+                case 3: functions.get(2).run();
                         break;
                 default: errorMenu();
             }

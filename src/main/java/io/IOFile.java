@@ -1,10 +1,13 @@
 package io;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class IOFile {
+    public static String URL_HISTORY = "src/main/resources/history.txt";
+
     public void readFileFirstTime() {
         HashMap<String, List<String>> slangDictionary = new HashMap<>();
         HashMap<String, List<String>> definitionDictionary = new HashMap<>();
@@ -68,8 +71,8 @@ public class IOFile {
             }
         }
 
-        writeFile("src/main/resources/slang-dictionary.txt", slangDictionary);
-        writeFile("src/main/resources/definition-dictionary.txt", definitionDictionary);
+        writeDictionary("src/main/resources/slang-dictionary.txt", slangDictionary);
+        writeDictionary("src/main/resources/definition-dictionary.txt", definitionDictionary);
     }
 
 
@@ -105,7 +108,7 @@ public class IOFile {
         return readDictionary(url);
     }
 
-    public void writeFile(String url, Map<String, List<String>> dictionary){
+    public void writeDictionary(String url, Map<String, List<String>> dictionary){
         try {
             FileWriter fw = new FileWriter(url);
 
@@ -173,6 +176,27 @@ public class IOFile {
         }
 
         return dictionary;
+    }
+
+    public void writeHistorySearchSlangWord(String slangWord){
+        try{
+        File file =new File(URL_HISTORY);
+        if(!file.exists()){
+            file.createNewFile();
+        }
+
+        FileWriter fw = new FileWriter(file,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "  :  "+ slangWord+"\n");
+        bw.close();
+    }catch (Exception e){
+            System.out.println("Lỗi khi cập nhật lịch sử!");
+        }
+    }
+
+    public File openHistory(){
+        File file = new File(URL_HISTORY);
+        return file;
     }
 
 }
