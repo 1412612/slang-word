@@ -7,7 +7,7 @@ import dictinary.Dictionary;
 import java.util.List;
 import java.util.Scanner;
 
-public class FunctionTwo implements AppFunction{
+public class FunctionTwo extends AppFunction{
     private Scanner scanner;
     private Dictionary dictionary;
 

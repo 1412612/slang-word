@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.util.List;
 import java.util.Scanner;
 
-public class FunctionThree implements AppFunction{
+public class FunctionThree extends AppFunction{
     private Scanner scanner;
     private Dictionary dictionary;
     private IOFile ioFile;

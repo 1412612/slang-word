@@ -1,10 +1,7 @@
 package app;
 
 import dictinary.Dictionary;
-import function.AppFunction;
-import function.FunctionOne;
-import function.FunctionThree;
-import function.FunctionTwo;
+import function.*;
 import io.IOFile;
 
 import java.util.ArrayList;
@@ -26,6 +23,7 @@ public class SlangWordApp {
         functions.add(new FunctionOne(scanner, dictionary, ioFile));
         functions.add(new FunctionTwo(scanner, dictionary));
         functions.add(new FunctionThree(scanner, dictionary, ioFile));
+        functions.add(new FunctionFour(scanner, dictionary, ioFile));
 
     }
 
@@ -47,6 +45,8 @@ public class SlangWordApp {
                         break;
                 case 3: functions.get(2).run();
                         break;
+                case 4: functions.get(3).run();
+                    break;
                 default: errorMenu();
             }
         }

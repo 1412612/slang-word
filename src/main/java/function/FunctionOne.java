@@ -7,7 +7,7 @@ import io.IOFile;
 import java.util.List;
 import java.util.Scanner;
 
-public class FunctionOne implements AppFunction{
+public class FunctionOne extends AppFunction{
     private Scanner scanner;
     private Dictionary dictionary;
     private IOFile ioFile;
