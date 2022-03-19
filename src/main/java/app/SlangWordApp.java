@@ -1,28 +1,41 @@
 package app;
 
 import dictinary.Dictionary;
+import function.AppFunction;
+import function.FunctionOne;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class SlangWordApp {
     private Dictionary dictionary;
     private Scanner scanner;
+    private List<AppFunction> functions;
 
     public SlangWordApp(){
-        dictionary = new Dictionary();
-        dictionary.loadDictionary();
-
+        this.dictionary = new Dictionary();
+        this.dictionary.loadDictionary();
         this.scanner = new Scanner(System.in);
+        functions = new ArrayList<>();
+        functions.add(new FunctionOne(scanner, dictionary));
     }
 
     public void run(){
         while (true){
             menu();
-            int intScanner = Integer.parseInt(scanner.nextLine());
+            int intScanner = 0;
+            try {
+                intScanner = Integer.parseInt(scanner.nextLine());
+            }catch (Exception e){
+                intScanner = -1;
+            }
+
 
             switch (intScanner){
-                case 1: functionOne();
+                case 1: functions.get(0).run();
+                break;
+                default: errorMenu();
             }
         }
 
@@ -30,7 +43,7 @@ public class SlangWordApp {
 
 
     public void menu(){
-        System.out.println("SLANG WORD\n" +
+        System.out.println("                 SLANG WORD\n" +
                 "===========================================\n" +
                 "                   MENU\n" +
                 "===========================================\n" +
@@ -50,42 +63,10 @@ public class SlangWordApp {
     }
 
     public void errorMenu(){
-        System.out.println(
-                "Chức năng không được hỗ trợ vui lòng nhập lkại!"
+        System.out.println( Constant.Color.ANSI_RED +
+                "Chức năng không được hỗ trợ vui lòng nhập lại!"
+                + Constant.Color.ANSI_RESET
         );
     }
 
-    public void menuFunctionOne(){
-        System.out.println(
-                "               SLANG WORD\n" +
-                        "===========================================\n" +
-                        "Chức năng 1: Tìm kiếm theo slang word.\n" +
-                        "===========================================\n" +
-                        "Mời bạn nhập slang word (nhấn phím 0 để quay lại menu):\n"
-        );
-    }
-
-    public void functionOne(){
-        while (true){
-            menuFunctionOne();
-            String line = scanner.nextLine();
-            if(line.equals("0")){
-                break;
-            }
-            List<String> definition = dictionary.getSlangDictionary().get(line);
-
-            if(definition==null){
-                System.out.println("Không có slang word "+  line + "trong từ điển!");
-            }else{
-                System.out.println("Slang word: "+ line + "  "+ definition);
-            }
-
-            System.out.println("1: Tiếp tục tìm kiếm slang word.\n" +
-                    "0: Quay về menu.\n");
-        line = scanner.nextLine();
-            if(line.equals("0")){
-                break;
-            }
-        }
-    }
 }
