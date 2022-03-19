@@ -3,6 +3,7 @@ package app;
 import dictinary.Dictionary;
 import function.AppFunction;
 import function.FunctionOne;
+import function.FunctionTwo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class SlangWordApp {
         this.scanner = new Scanner(System.in);
         functions = new ArrayList<>();
         functions.add(new FunctionOne(scanner, dictionary));
+        functions.add(new FunctionTwo(scanner, dictionary));
     }
 
     public void run(){
@@ -34,7 +36,9 @@ public class SlangWordApp {
 
             switch (intScanner){
                 case 1: functions.get(0).run();
-                break;
+                        break;
+                case 2: functions.get(1).run();
+                        break;
                 default: errorMenu();
             }
         }
@@ -43,7 +47,7 @@ public class SlangWordApp {
 
 
     public void menu(){
-        System.out.println("                 SLANG WORD\n" +
+        System.out.println("\n                 SLANG WORD\n" +
                 "===========================================\n" +
                 "                   MENU\n" +
                 "===========================================\n" +
