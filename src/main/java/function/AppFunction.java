@@ -3,6 +3,7 @@ package function;
 import app.Constant;
 import dictinary.Dictionary;
 
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class AppFunction {
@@ -31,5 +32,9 @@ public abstract class AppFunction {
 
     public void printHighlight(String line){
         System.out.println(Constant.Color.ANSI_BLUE + line + Constant.Color.ANSI_RESET);
+    }
+
+    public String listToString(List<String> list){
+        return list.toString().substring(1, list.toString().length()-1);
     }
 }

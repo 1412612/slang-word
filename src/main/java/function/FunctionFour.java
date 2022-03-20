@@ -63,7 +63,6 @@ public class FunctionFour extends AppFunction{
 
     private void addNewSlangWordToDictionary(String slang, String definition){
         List<String> definitions = Arrays.asList(definition.split("\\|"));
-       dictionary.getSlangDictionary().put(slang, definitions);
-       new AppUtils().updateDefinitionDictionary(slang, definitions, dictionary);
+       AppUtils.addDefinitionDictionary(slang, definitions, dictionary);
     }
 }

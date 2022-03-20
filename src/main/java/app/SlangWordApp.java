@@ -24,6 +24,7 @@ public class SlangWordApp {
         functions.add(new FunctionTwo(scanner, dictionary));
         functions.add(new FunctionThree(scanner, dictionary, ioFile));
         functions.add(new FunctionFour(scanner, dictionary, ioFile));
+        functions.add(new FunctionFive(scanner, dictionary, ioFile));
 
     }
 
@@ -46,6 +47,8 @@ public class SlangWordApp {
                 case 3: functions.get(2).run();
                         break;
                 case 4: functions.get(3).run();
+                    break;
+                case 5: functions.get(4).run();
                     break;
                 default: errorMenu();
             }
