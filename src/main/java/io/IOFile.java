@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class IOFile {
     public static String URL_HISTORY = "src/main/resources/history.txt";
+    public static String URL_SLANG_DICTIONARY = "src/main/resources/slang-dictionary.txt";
+    public static String URL_DEFINITION_DICTIONARY = "src/main/resources/definition-dictionary.txt";
 
     public void readFileFirstTime() {
         HashMap<String, List<String>> slangDictionary = new HashMap<>();
@@ -197,6 +199,19 @@ public class IOFile {
     public File openHistory(){
         File file = new File(URL_HISTORY);
         return file;
+    }
+
+    public void deleteFile(String url){
+        try {
+            File file = new File(url);
+                file.delete();
+        } catch (Exception e) {}
+    }
+
+    public void resetDictionary(){
+        deleteFile(URL_DEFINITION_DICTIONARY);
+        deleteFile(URL_SLANG_DICTIONARY);
+        readFileFirstTime();
     }
 
 }

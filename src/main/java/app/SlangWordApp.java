@@ -26,6 +26,7 @@ public class SlangWordApp {
         functions.add(new FunctionFour(scanner, dictionary, ioFile));
         functions.add(new FunctionFive(scanner, dictionary, ioFile));
         functions.add(new FunctionSix(scanner, dictionary, ioFile));
+        functions.add(new FunctionSeven(scanner, dictionary, ioFile));
     }
 
     public void run(){
@@ -51,6 +52,8 @@ public class SlangWordApp {
                 case 5: functions.get(4).run();
                     break;
                 case 6: functions.get(5).run();
+                    break;
+                case 7: functions.get(6).run();
                     break;
                 default: errorMenu();
             }
@@ -85,5 +88,4 @@ public class SlangWordApp {
                 + Constant.Color.ANSI_RESET
         );
     }
-
 }
