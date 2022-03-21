@@ -1,34 +1,31 @@
 package function;
 
-import app.Constant;
 import dictinary.Dictionary;
 import io.IOFile;
-import utils.AppUtils;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
-public class FunctionEight extends AppFunction{
+public class FunctionEight extends AppFunction {
     private Scanner scanner;
     private Dictionary dictionary;
     private IOFile ioFile;
 
-    public FunctionEight(){};
+    public FunctionEight() {
+    }
 
-    public FunctionEight(Scanner scanner, Dictionary dictionary, IOFile ioFile){
+    public FunctionEight(Scanner scanner, Dictionary dictionary, IOFile ioFile) {
         this.scanner = scanner;
         this.dictionary = dictionary;
         this.ioFile = ioFile;
 
     }
+
     @Override
     public void run() {
         function();
     }
 
-    public void menu(){
+    public void menu() {
         System.out.println(
                 "               SLANG WORD\n" +
                         "===========================================\n" +
@@ -36,14 +33,12 @@ public class FunctionEight extends AppFunction{
         );
     }
 
-    public void function(){
+    public void function() {
         menu();
-        String key = scanner.nextLine();
-        if(!key.equals("1")) return;
-        ioFile.resetDictionary();
-        dictionary.loadDictionary();
-        printSuccess("Reset thành công!");
-        printInfo(" Bấm phím bất kỳ để quay về menu.");
+        String randomKey = dictionary.getRandomKey(dictionary.getSlangDictionary());
+        printInfo("Slang word ngẫu nhiên:");
+        printHighlight(randomKey + "  :  " + listToString(dictionary.getSlangDictionary().get(randomKey)));
+        printInfo("Bấm phím bất kỳ để quay về menu.");
         scanner.nextLine();
     }
 }
