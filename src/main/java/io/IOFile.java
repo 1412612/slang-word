@@ -1,5 +1,7 @@
 package io;
 
+import utils.AppUtils;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -9,11 +11,12 @@ public class IOFile {
     public static String URL_HISTORY = "src/main/resources/history.txt";
     public static String URL_SLANG_DICTIONARY = "src/main/resources/slang-dictionary.txt";
     public static String URL_DEFINITION_DICTIONARY = "src/main/resources/definition-dictionary.txt";
+    public static String URL_ROOT = "src/main/resources/root-slang.txt";
 
     public void readFileFirstTime() {
         HashMap<String, List<String>> slangDictionary = new HashMap<>();
         HashMap<String, List<String>> definitionDictionary = new HashMap<>();
-        File file = new File("src/main/resources/root-slang.txt");
+        File file = new File(URL_ROOT);
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -45,7 +48,7 @@ public class IOFile {
 
                     Set<String> indexs = new HashSet<>();
                     for(String item : listDefinitions){
-                        indexs.addAll(indexDefinition(item));
+                        indexs.addAll(AppUtils.indexDefinition(item));
                     }
 
                     Iterator<String> iterator = indexs.iterator();
@@ -73,23 +76,13 @@ public class IOFile {
             }
         }
 
-        writeDictionary("src/main/resources/slang-dictionary.txt", slangDictionary);
-        writeDictionary("src/main/resources/definition-dictionary.txt", definitionDictionary);
+        writeDictionary(URL_SLANG_DICTIONARY, slangDictionary);
+        writeDictionary(URL_DEFINITION_DICTIONARY, definitionDictionary);
     }
 
-
-    Set<String> indexDefinition(String definition){
-        Set<String> indexs = new HashSet<>();
-        for(int i=0;i<definition.length();i++){
-            for(int j=i+1; j<=definition.length();j++){
-                indexs.add(definition.substring(i, j));
-            }
-        }
-        return indexs;
-    }
 
     public HashMap<String, List<String>> getSlangDictionary(){
-        String url = "src/main/resources/slang-dictionary.txt";
+        String url =URL_SLANG_DICTIONARY;
         File file = new File(url);
 
         if (!file.exists()) {
@@ -100,7 +93,7 @@ public class IOFile {
     }
 
     public HashMap<String, List<String>> getDefinitionDictionary(){
-        String url = "src/main/resources/definition-dictionary.txt";
+        String url = URL_DEFINITION_DICTIONARY;
         File file = new File(url);
 
         if (!file.exists()) {
@@ -212,6 +205,13 @@ public class IOFile {
         deleteFile(URL_DEFINITION_DICTIONARY);
         deleteFile(URL_SLANG_DICTIONARY);
         readFileFirstTime();
+    }
+
+    public void exitApp(Map<String, List<String>> slangDictionary, Map<String, List<String>> definitionDictionary){
+        deleteFile(URL_DEFINITION_DICTIONARY);
+        deleteFile(URL_SLANG_DICTIONARY);
+        writeDictionary(URL_SLANG_DICTIONARY, slangDictionary);
+        writeDictionary(URL_DEFINITION_DICTIONARY, definitionDictionary);
     }
 
 }

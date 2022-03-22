@@ -14,27 +14,27 @@ public abstract class AppFunction {
         if(line.equals("0")) return true;
         return false;
     }
-    public void printSuccess(String line){
+    public static void printSuccess(String line){
         System.out.println(Constant.Color.ANSI_GREEN + line + Constant.Color.ANSI_RESET);
     }
 
-    public void printError(String line){
+    public static void printError(String line){
         System.out.println(Constant.Color.ANSI_RED+ line + Constant.Color.ANSI_RESET);
     }
 
-    public void printWarning(String line){
+    public static void printWarning(String line){
         System.out.println(Constant.Color.ANSI_YELLOW + line + Constant.Color.ANSI_RESET);
     }
 
-    public void printInfo(String line){
+    public static void printInfo(String line){
         System.out.println(Constant.Color.ANSI_RESET + line + Constant.Color.ANSI_RESET);
     }
 
-    public void printHighlight(String line){
+    public static void printHighlight(String line){
         System.out.println(Constant.Color.ANSI_BLUE + line + Constant.Color.ANSI_RESET);
     }
 
-    public String listToString(List<String> list){
+    public static String listToString(List<String> list){
         return list.toString().substring(1, list.toString().length()-1);
     }
 }

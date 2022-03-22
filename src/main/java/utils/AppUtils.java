@@ -50,6 +50,7 @@ public class AppUtils {
     }
 
     public static Set<String> indexDefinition(String definition){
+        definition = definition.toLowerCase(Locale.ROOT);
         Set<String> indexs = new HashSet<>();
         for(int i=0;i<definition.length();i++){
             for(int j=i+1; j<=definition.length();j++){

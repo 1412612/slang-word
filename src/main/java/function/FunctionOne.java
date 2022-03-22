@@ -47,17 +47,10 @@ public class FunctionOne extends AppFunction{
             ioFile.writeHistorySearchSlangWord(line);
 
             if(definition==null){
-                System.out.println(Constant.Color.ANSI_YELLOW + "Không có slang word "+  line + " trong từ điển!" + Constant.Color.ANSI_RESET);
+                System.out.println(Constant.Color.ANSI_YELLOW + "Không có slang word \""+  line + "\" trong từ điển!" + Constant.Color.ANSI_RESET);
             }else{
-                System.out.println(Constant.Color.ANSI_GREEN + "Slang word: "+ line + "  "+ definition + Constant.Color.ANSI_RESET);
+                System.out.println(Constant.Color.ANSI_GREEN + "Slang word:\n\""+ line + "\" :  "+ listToString(definition) + Constant.Color.ANSI_RESET);
             }
-
-//            System.out.println("1: Tiếp tục tìm kiếm slang word.\n" +
-//                    "0: Quay về menu.\n");
-//            line = scanner.nextLine();
-//            if(line.equals("0")){
-//                break;
-//            }
         }
     }
 }

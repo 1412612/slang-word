@@ -4,10 +4,7 @@ import app.Constant;
 import dictinary.Dictionary;
 import io.IOFile;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FunctionTen extends AppFunction {
@@ -47,26 +44,26 @@ public class FunctionTen extends AppFunction {
             result.addAll(randomKey);
             Collections.shuffle(result);
             String definition = randomKey.stream().map(dictionary.getSlangDictionary()::get).map(lists -> lists.get(0)).collect(Collectors.toList()).get(0);
-            printInfo("Chọn đáp án đúng với definition: " + Constant.Color.ANSI_BLUE + definition);
-            System.out.println(Constant.Color.ANSI_PURPLE + "A : " + result.get(0));
-            System.out.println(Constant.Color.ANSI_PURPLE + "B : " + result.get(1));
-            System.out.println(Constant.Color.ANSI_PURPLE + "C : " + result.get(2));
-            System.out.println(Constant.Color.ANSI_PURPLE + "D : " + result.get(3));
+            printInfo("Chọn đáp án đúng với definition: " + Constant.Color.ANSI_BLUE + definition+ Constant.Color.ANSI_RESET);
+            System.out.println(Constant.Color.ANSI_PURPLE + "A : " + result.get(0) + Constant.Color.ANSI_RESET);
+            System.out.println(Constant.Color.ANSI_PURPLE + "B : " + result.get(1) + Constant.Color.ANSI_RESET);
+            System.out.println(Constant.Color.ANSI_PURPLE + "C : " + result.get(2) + Constant.Color.ANSI_RESET);
+            System.out.println(Constant.Color.ANSI_PURPLE + "D : " + result.get(3) + Constant.Color.ANSI_RESET);
 
             String pickStr = "";
             while (pickStr.equals("")) {
                 String pick = scanner.nextLine();
-                switch (pick) {
-                    case "A":
+                switch (pick.toLowerCase(Locale.ROOT)) {
+                    case "a":
                         pickStr = result.get(0);
                         break;
-                    case "B":
+                    case "b":
                         pickStr = result.get(1);
                         break;
-                    case "C":
+                    case "c":
                         pickStr = result.get(2);
                         break;
-                    case "D":
+                    case "d":
                         pickStr = result.get(3);
                         break;
                     case "0":

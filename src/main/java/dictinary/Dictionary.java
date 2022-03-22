@@ -3,7 +3,6 @@ package dictinary;
 import io.IOFile;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Dictionary {
     private HashMap<String, List<String>> slangDictionary;

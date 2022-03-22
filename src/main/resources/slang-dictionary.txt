@@ -1,5 +1,3 @@
-BBC`British Broadcasting Corporation
-BBB`Bugging Beyond Belief
 BBE`Babe
 GLOTR`Good Luck On The Rebuild
 TWSS`That's What She Said
@@ -362,7 +360,6 @@ BSB`Backstreet Boys
 STR`Strength|Short Term Relationship
 BSA`Boy Scouts of America
 BSC`Bachelor of Science
-C4C`Comment for Comment
 STS`Smirk To Self
 TI AMO`I Love You
 BSF`But Seriously Folks
@@ -6106,6 +6103,7 @@ NAGL`Not A Good Look
 YJLTG`You Just Lost The Game
 BOHO`Bohemian
 UKWUR`You Know Who You Are
+Thanh`dep trai|Hoc Gioi
 JWAS`Just Wait And See
 VIBE`Atmosphere|ambience
 OMA`Oh My Allah
