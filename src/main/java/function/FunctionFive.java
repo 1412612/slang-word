@@ -72,7 +72,10 @@ public class FunctionFive extends AppFunction{
             return;
         }
 
-        updateNewSlangWordToDictionary(slangWord, dictionary.getSlangDictionary().get(slangWord), newSlangWord, newDefinition);
+        updateNewSlangWordToDictionary(slangWord,
+                dictionary.getSlangDictionary().get(slangWord),
+                newSlangWord.equals("1") ? slangWord : newSlangWord,
+                newDefinition.equals("1") ? String.join( "|", dictionary.getSlangDictionary().get(slangWord)): newDefinition);
 
         printSuccess("Cập nhật thành công!");
 

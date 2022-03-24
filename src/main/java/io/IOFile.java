@@ -8,20 +8,21 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class IOFile {
-    public static String URL_HISTORY = "src/main/resources/history.txt";
-    public static String URL_SLANG_DICTIONARY = "src/main/resources/slang-dictionary.txt";
-    public static String URL_DEFINITION_DICTIONARY = "src/main/resources/definition-dictionary.txt";
-    public static String URL_ROOT = "src/main/resources/root-slang.txt";
+    public static String URL_HISTORY = "history.txt";
+    public static String URL_SLANG_DICTIONARY = "slang-dictionary.txt";
+    public static String URL_DEFINITION_DICTIONARY = "definition-dictionary.txt";
+    public static String URL_ROOT = "/root-slang.txt";
 
     public void readFileFirstTime() {
         HashMap<String, List<String>> slangDictionary = new HashMap<>();
         HashMap<String, List<String>> definitionDictionary = new HashMap<>();
-        File file = new File(URL_ROOT);
+        //File file = new File(URL_ROOT);
+        InputStream in = getClass().getResourceAsStream(URL_ROOT);
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            reader = new BufferedReader(new InputStreamReader(in));
+        } catch (Exception e) {
+            //e.printStackTrace();
         }
         try {
             String line = reader.readLine();
